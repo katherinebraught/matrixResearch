@@ -70,9 +70,22 @@ public class Sorter {
 
     private void swap(char[][] arr, int i, int j) {
         char[] temp = Arrays.copyOf(arr[i], arr[i].length);
-        //Data temp = new Data(arr[i].getName(), arr[i].getData());
         arr[i] = arr[j];
         arr[j] = temp;
+    }
+
+    //TODO return to private method after testing
+    private void swapColumn(char[][] arr, int i, int j) {
+        char[] temp = new char[arr.length];
+        for (int k=0; k < arr.length; k++) {
+            temp[k]= arr[k][i];
+        }
+        for (int k=0; k < arr.length; k++) {
+            arr[k][i] = arr[k][j];
+        }
+        for (int k=0; k < arr.length; k++) {
+            arr[k][j] = temp[k];
+        }
     }
 
     public void MSBradixSort() {
@@ -105,5 +118,38 @@ public class Sorter {
         System.out.println("Sort one bin:" + oneBinStart + " to " + end);
         MSBradixSortRec(oneBinStart, end, index +1, organisms);
     }
+
+    public void columnRadixSort() {
+        int m = organisms[0].length;
+        columnRadixSortRec(0, m, 0, organisms);
+
+    }
+
+    public void columnRadixSortRec(int start, int end, int index, char[][] organisms) {
+        if (index == organisms.length || end - start == 1) {
+            return;
+        }
+        System.out.println("start " + index);
+        int zeroBinEnd = start;
+        int oneBinStart = end;
+        int i = start;
+        while (zeroBinEnd != oneBinStart) {
+            //printState(organisms, zeroBinEnd, oneBinStart);
+            if (organisms[index][i] == ONE) {
+                oneBinStart -= 1;
+                swapColumn(organisms, i, oneBinStart);
+                System.out.println("here swapping" + i + " " + oneBinStart);
+            }
+            else {
+                zeroBinEnd += 1;
+                i++;
+            }
+        }
+        System.out.println("Sort zero bin:" + start + " to "  + zeroBinEnd);
+        columnRadixSortRec(start, zeroBinEnd, index +1, organisms);
+        System.out.println("Sort one bin:" + oneBinStart + " to " + end);
+        columnRadixSortRec(oneBinStart, end, index +1, organisms);
+    }
+
 
 }
