@@ -19,7 +19,7 @@ public class Run {
 
     //produces metadata for
     private static void metaData(char[][] matrix) {
-        System.out.println("Super sets:");
+        System.out.println("Super Columns:");
         boolean[] isSubset = new boolean[matrix[0].length];
         for (int col=  matrix[0].length -1; col > 0; col--) {
             ArrayList<Integer> subsets = new ArrayList<>();
@@ -27,10 +27,11 @@ public class Run {
                 if (!isSubset[col]) {
                     boolean subset = true;
                     for (int i=0; i< matrix.length; i++) {
-                        if (matrix[0][prev] == Sorter.ONE) {
-                            if (matrix[0][col] == Sorter.ZERO) {
+                        if (matrix[i][prev] == Sorter.ONE) {
+                            if (matrix[i][col] == Sorter.ZERO) {
                                 subset = false;
                             }
+
                         }
                     }
                     if (subset) {
@@ -40,7 +41,7 @@ public class Run {
                 }
             }
             if (!subsets.isEmpty()) {
-                System.out.println("Column " + col + " has subsets: " + subsets.toString());
+                System.out.println("Column " + col + " has sub-columns: " + subsets.toString());
             }
         }
 

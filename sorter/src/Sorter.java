@@ -136,8 +136,12 @@ public class Sorter {
                 i++;
             }
         }
-        columnRadixSortRec(start, zeroBinEnd, index +1, organisms);
-        columnRadixSortRec(oneBinStart, end, index +1, organisms);
+        if (start != zeroBinEnd) {
+            columnRadixSortRec(start, zeroBinEnd, index + 1, organisms);
+        }
+        if (oneBinStart != end) {
+            columnRadixSortRec(oneBinStart, end, index + 1, organisms);
+        }
     }
 
 
