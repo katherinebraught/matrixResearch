@@ -3,10 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="e3779b78-dfd2-4469-9af7-971842367c06" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../outputformatter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../outputformatter/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../outputformatter/out/production/outputformatter/Results$Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/../outputformatter/out/production/outputformatter/Results$Node.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../outputformatter/out/production/outputformatter/Results.class" beforeDir="false" afterPath="$PROJECT_DIR$/../outputformatter/out/production/outputformatter/Results.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../outputformatter/out/production/outputformatter/Run.class" beforeDir="false" afterPath="$PROJECT_DIR$/../outputformatter/out/production/outputformatter/Run.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../outputformatter/src/Results.java" beforeDir="false" afterPath="$PROJECT_DIR$/../outputformatter/src/Results.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../outputformatter/src/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/../outputformatter/src/Run.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RadixSort/Run.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RadixSort/Run.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Run.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sorter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sorter.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -301,12 +303,12 @@
       <workItem from="1568477604179" duration="4436000" />
       <workItem from="1568735412623" duration="3664000" />
       <workItem from="1569964276884" duration="3289000" />
-      <workItem from="1569969765793" duration="2211000" />
+      <workItem from="1569969765793" duration="2682000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26450000" />
+    <option name="totallyTimeSpent" value="26921000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1293" height="703" extended-state="6" />

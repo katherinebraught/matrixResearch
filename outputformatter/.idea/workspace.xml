@@ -3,11 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="9883dbb5-06a1-4d14-9462-85e84053f196" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/outputformatter/Results$Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/outputformatter/Results$Node.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/outputformatter/Results.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/outputformatter/Results.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/outputformatter/Run.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/outputformatter/Run.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Results.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Results.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Run.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sorter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../sorter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sorter/out/production/RadixSort/Run.class" beforeDir="false" afterPath="$PROJECT_DIR$/../sorter/out/production/RadixSort/Run.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sorter/out/production/RadixSort/Sorter.class" beforeDir="false" afterPath="$PROJECT_DIR$/../sorter/out/production/RadixSort/Sorter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sorter/src/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/../sorter/src/Run.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sorter/src/Sorter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../sorter/src/Sorter.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,13 +42,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="4144" />
+          <entry key="java" value="4364" />
           <entry key="taxonList" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="4144" />
+          <entry key="JAVA" value="4364" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
@@ -55,11 +56,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Results.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="25" column="15" lean-forward="true" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
+            <state relative-caret-position="197">
+              <caret line="38" column="40" lean-forward="true" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#852#853#0" expanded="true" />
@@ -92,11 +93,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Run.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="24" lean-forward="true" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+            <state relative-caret-position="68">
+              <caret line="4" column="64" selection-start-line="4" selection-start-column="64" selection-end-line="4" selection-end-column="64" />
             </state>
           </provider>
         </entry>
@@ -153,8 +154,8 @@
       <list>
         <option value="$PROJECT_DIR$/SmallMatrix.txt" />
         <option value="$PROJECT_DIR$/taxonList" />
-        <option value="$PROJECT_DIR$/src/Run.java" />
         <option value="$PROJECT_DIR$/src/Results.java" />
+        <option value="$PROJECT_DIR$/src/Run.java" />
       </list>
     </option>
   </component>
@@ -238,12 +239,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1569969738119</updated>
-      <workItem from="1569969742700" duration="7106000" />
+      <workItem from="1569969742700" duration="7325000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7106000" />
+    <option name="totallyTimeSpent" value="7325000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1293" height="703" extended-state="6" />
@@ -285,6 +286,13 @@
     <entry file="file://$PROJECT_DIR$/SmallMatrix.sol">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/taxonList">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="6" lean-forward="true" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/SmallMatrix - Copy.sol">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -299,27 +307,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/taxonList">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="6" lean-forward="true" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Run.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="24" lean-forward="true" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testOut">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Results.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="25" column="15" lean-forward="true" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
+        <state relative-caret-position="197">
+          <caret line="38" column="40" lean-forward="true" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#852#853#0" expanded="true" />
@@ -339,6 +330,16 @@
             <element signature="e#1404#1405#0" expanded="true" />
             <element signature="e#1441#1442#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testOut">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Run.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="64" selection-start-line="4" selection-start-column="64" selection-end-line="4" selection-end-column="64" />
         </state>
       </provider>
     </entry>

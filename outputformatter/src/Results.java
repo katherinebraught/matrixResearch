@@ -21,20 +21,21 @@ public class Results {
     }
 
 
-    public Results(String filename, String taxonList, String outputFile ) throws Exception {
+    public Results(String filename, String originalMatrixFile, String outputFile ) throws Exception {
         readFile(filename);
         setUpMatrix();
-        produceOutput(taxonList, outputFile);
+        produceOutput(originalMatrixFile, outputFile);
     }
 
-    private void produceOutput(String taxonList, String outputFile) throws Exception {
-        File taxons = new File(taxonList);
+    private void produceOutput(String originalMatrixFile, String outputFile) throws Exception {
+        File taxons = new File(originalMatrixFile);
         File outFile = new File(outputFile);
         FileWriter out = new FileWriter(outFile);
         Scanner s = new Scanner(taxons);
         int row = 0;
-        while (s.hasNextLine()) {
-            String taxonName = s.nextLine();
+        while (s.hasNext()) {
+            String taxonName = s.next() + " " + s.next();
+            s.next();
             if (!taxonName.equals("")) {
                 out.write(taxonName + " ");
                 out.write(Arrays.toString(matrix[row]));

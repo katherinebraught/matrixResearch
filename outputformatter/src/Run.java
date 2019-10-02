@@ -1,7 +1,9 @@
 public class Run  {
 
     public static void main(String[] args) throws Exception{
-        Results result=new Results("SmallMatrix.sol", "taxonList", "testOut");
+
+        //assumes taxons have full name with both parts (2 words)
+        Results result=new Results("SmallMatrix.sol", "SmallMatrix.txt", "testOut");
         }
 
 }
