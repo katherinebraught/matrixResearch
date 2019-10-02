@@ -1,0 +1,7 @@
+line 1 	----X
+line 2	----X
+line 3	X-XX-
+line 4	----X
+line 5 	-XXXX
+line 6	-X---
+line 7	----X

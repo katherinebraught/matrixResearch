@@ -7,18 +7,18 @@ import java.util.Scanner;
 public class Sorter {
     private char[][] organisms;
 
-    private final char ZERO = '-';
-    private final char ONE = 'X';
+    public static final char ZERO = '-';
+    public static final char ONE = 'X';
 
     public Sorter(String fileName) throws Exception {
         readInFile(fileName);
     }
 
-    public char[][] getOrganisms() {
+    public char[][] getMatrix() {
         return organisms;
     }
 
-    public void readInFile(String filename) throws Exception {
+    private void readInFile(String filename) throws Exception {
         File f = new File(filename);
         Scanner s = new Scanner(f);
 
@@ -27,7 +27,6 @@ public class Sorter {
         while (s.hasNext()) {
             String name = s.next();
             String availability = s.next();
-            //Data data = new Data(name, availability);
             tempOrganisms.add(availability);
         }
 
@@ -74,7 +73,6 @@ public class Sorter {
         arr[j] = temp;
     }
 
-    //TODO return to private method after testing
     private void swapColumn(char[][] arr, int i, int j) {
         char[] temp = new char[arr.length];
         for (int k=0; k < arr.length; k++) {
@@ -91,14 +89,12 @@ public class Sorter {
     public void MSBradixSort() {
         int m = organisms.length;
         MSBradixSortRec(0, m, 0, organisms);
-
     }
 
-    public void MSBradixSortRec(int start, int end, int index, char[][] organisms) {
+    private void MSBradixSortRec(int start, int end, int index, char[][] organisms) {
         if (index == organisms[0].length || end - start == 1) {
             return;
         }
-        System.out.println("start " + index);
         int zeroBinEnd = start;
         int oneBinStart = end;
         int i = start;
@@ -113,9 +109,7 @@ public class Sorter {
                 i++;
             }
         }
-        System.out.println("Sort zero bin:" + start + " to "  + zeroBinEnd);
         MSBradixSortRec(start, zeroBinEnd, index +1, organisms);
-        System.out.println("Sort one bin:" + oneBinStart + " to " + end);
         MSBradixSortRec(oneBinStart, end, index +1, organisms);
     }
 
@@ -125,29 +119,24 @@ public class Sorter {
 
     }
 
-    public void columnRadixSortRec(int start, int end, int index, char[][] organisms) {
+    private void columnRadixSortRec(int start, int end, int index, char[][] organisms) {
         if (index == organisms.length || end - start == 1) {
             return;
         }
-        System.out.println("start " + index);
         int zeroBinEnd = start;
         int oneBinStart = end;
         int i = start;
         while (zeroBinEnd != oneBinStart) {
-            //printState(organisms, zeroBinEnd, oneBinStart);
             if (organisms[index][i] == ONE) {
                 oneBinStart -= 1;
                 swapColumn(organisms, i, oneBinStart);
-                System.out.println("here swapping" + i + " " + oneBinStart);
             }
             else {
                 zeroBinEnd += 1;
                 i++;
             }
         }
-        System.out.println("Sort zero bin:" + start + " to "  + zeroBinEnd);
         columnRadixSortRec(start, zeroBinEnd, index +1, organisms);
-        System.out.println("Sort one bin:" + oneBinStart + " to " + end);
         columnRadixSortRec(oneBinStart, end, index +1, organisms);
     }
 

@@ -1,17 +1,48 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+
 public class Run {
 
     public static void main(String[] args) throws Exception {
-        //String[] organisms = {"--X--", "X---X", "XXXX-", "X--X-"};
-        //Sorter s = new Sorter(args[1]);
-        //Sorter s = new Sorter("C:\\Users\\Katherine\\IdeaProjects\\matrixResearch\\sorter\\src\\Euphorbia");
-        //s.MSBradixSort();
-        //System.out.println(Arrays.toString((s.getOrganisms())));
-        //s.writeToFile("C:\\Users\\Katherine\\IdeaProjects\\matrixResearch\\sorter\\src\\Euphorbia.sortedd");
+        String filename = args[0];
+        boolean rowSort = (args[1] == "r" || args[1] == "R");
+        Sorter s = new Sorter(filename);
+        if (rowSort) {
+            s.MSBradixSort();
+        }
+        else {
+            s.columnRadixSort();
+            metaData(s.getMatrix());
+        }
+        s.writeToFile("sorted" + filename);
+    }
 
-        Sorter s = new Sorter("C:\\Users\\Katherine\\IdeaProjects\\matrixResearch\\sorter\\src\\test");
-        s.columnRadixSort();
-        s.writeToFile("C:\\Users\\Katherine\\IdeaProjects\\matrixResearch\\sorter\\src\\testtColumnSort");
+    //produces metadata for
+    private static void metaData(char[][] matrix) {
+        System.out.println("Super sets:");
+        boolean[] isSubset = new boolean[matrix[0].length];
+        for (int col=  matrix[0].length -1; col > 0; col--) {
+            ArrayList<Integer> subsets = new ArrayList<>();
+            for (int prev = col - 1; prev >= 0; prev --) {
+                if (!isSubset[col]) {
+                    boolean subset = true;
+                    for (int i=0; i< matrix.length; i++) {
+                        if (matrix[0][prev] == Sorter.ONE) {
+                            if (matrix[0][col] == Sorter.ZERO) {
+                                subset = false;
+                            }
+                        }
+                    }
+                    if (subset) {
+                        isSubset[prev] = true;
+                        subsets.add(prev);
+                    }
+                }
+            }
+            if (!subsets.isEmpty()) {
+                System.out.println("Column " + col + " has subsets: " + subsets.toString());
+            }
+        }
 
     }
 }
