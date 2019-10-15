@@ -13,13 +13,14 @@ arg2 = sys.argv[2]
 INFILE = open(arg1, "r")  # open the file specified by the value of arg1, to read from the file.
 OUT = open(arg2, "w")     # open the file specified by the value of arg2, to write to the file.
 
-matrix = INFILE.read().splitlines() # Read data matrix, stripping away \n's.
+# Read data matrix, stripping away empty lines
+matrix = INFILE.read().splitlines()
+while("" in matrix) :
+    matrix.remove("")
+    
 n = len(matrix)     # Require n >= 1
 k = len(matrix[0])  # Require k > =1
 INFILE.close()
-
-print(matrix)
-print(k)
 
 # Constraints to ensure each node gets only one color
 oneColorConstrs = ""
