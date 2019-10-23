@@ -25,7 +25,7 @@ INFILE.close()
 # Constraints to ensure each node gets only one color
 oneColorConstrs = ""
 for i in xrange(0,n):
-    oneColorConstrs = oneColorConstrs + "cc(0,"+ str(i) + ") x(" + str(i) + ",0)"
+    oneColorConstrs = oneColorConstrs + "cc(0,"+ str(i) + "): x(" + str(i) + ",0)"
     for r in xrange (1,4):
         oneColorConstrs = oneColorConstrs + " + x(" + str(i) + "," + str(r) + ")"
 
@@ -34,7 +34,7 @@ for i in xrange(0,n):
 # "Surjective" constraints: Ensure each color is used at least once.
 surjColorConstrs = ""
 for r in xrange(0,4):
-    surjColorConstrs = surjColorConstrs + "cc(1," + str(r) +") x(0," + str(r) + ")"
+    surjColorConstrs = surjColorConstrs + "cc(1," + str(r) +"): x(0," + str(r) + ")"
     for i in xrange(1,n):
         surjColorConstrs = surjColorConstrs + " + x(" + str(i) + "," + str(r) + ")"
     surjColorConstrs = surjColorConstrs + " >= 1\n"
@@ -42,7 +42,7 @@ for r in xrange(0,4):
 # Ensure no hyperedge is rainbow-colored: topology-independent constraints
 noRainbowConstrs = ""
 for j in xrange(0,k):
-    noRainbowConstrs = noRainbowConstrs + "cc(2," + str(j) +") z(" + str(j) + ",0)"
+    noRainbowConstrs = noRainbowConstrs + "cc(2," + str(j) +"): z(" + str(j) + ",0)"
     for r in xrange(1,4):
         noRainbowConstrs = noRainbowConstrs + " + z(" + str(j) + "," + str(r) + ")"
 
@@ -62,8 +62,8 @@ for j in xrange(0,k):
             if matrix[q][j] == "X":
                 sumXIR = sumXIR + " + x(" + str(q) + "," + str(r) + ")"
 
-        topolDepConstrs = topolDepConstrs + "cc(3," + str(j) +") " + sumXIR + " + z(" + str(j) + "," + str(r) + ") >= 1" + "\n"
-        topolDepConstrs = topolDepConstrs + "cc(4," + str(j) + ") " + sumXIR + " + " + str(n) + " z(" + str(j) + "," + str(r) + ") <= " + str(n) + "\n"
+        topolDepConstrs = topolDepConstrs + "cc(3," + str(j) + "," + str(r) +"): " + sumXIR + " + z(" + str(j) + "," + str(r) + ") >= 1" + "\n"
+        topolDepConstrs = topolDepConstrs + "cc(4," + str(j) + "," + str(r) + "): " + sumXIR + " + " + str(n) + " z(" + str(j) + "," + str(r) + ") <= " + str(n) + "\n"
 
 # List of (binary) variables.
 binaryVars = "binary \n"
