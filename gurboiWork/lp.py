@@ -15,34 +15,37 @@ if len(sys.argv) < 3:
     print('Usage: lp.py filename row')
     quit()
 
-# Read and solve model
-
+# Read and solve initial model
 model = read(sys.argv[1])
-model.write("before.lp")
+model.write("eucbefore.lp")
 model.optimize()
+model.write("eucbefore.sol")
 
-print("now we can remove a row")
 
+
+#consider removing reptitive columns
+#good testing ones have lots of X's
+#tool that allows you to remove a specific set of organisms
+#remove row with the most dashes
+#begin removing the row
 row = sys.argv[2]
-
-#print(model.Vars())
-constraints = model.getConstrs()
-vars = model.getVars()
-#step one: find the variables that corresponds with row
-xvars = []
-for var in vars:
-    for i in range(0,4):
-        if (var.varname == "x(" + str(row) + "," + str(i) + ")"):
-            xvars.append(var)
-print(xvars)
-for constr in constraints:
-    #remove entire constraint for cc(0,row)
-    if (constr.constrName == "cc(0," + row + ")"):
-        print(constr.constrName) #prints cc(0,1)
-        model.remove(constr)
-    #remove x(row,color) in each constraint
-    else:
-        for var in xvars:
-            model.chgCoeff(constr,var, 0)
-model.write("after.lp")
-
+if (row != "n"):
+    constraints = model.getConstrs()
+    vars = model.getVars()
+    #find the variables that corresponds with row
+    xvars = []
+    for var in vars:
+        for i in range(0,4):
+            if (var.varname == "x(" + str(row) + "," + str(i) + ")"):
+                xvars.append(var)
+    for constr in constraints:
+        #remove entire constraint for cc(0,row)
+        if (constr.constrName == "cc(0," + row + ")"):
+            model.remove(constr)
+        #remove x(row,color) in each constraint
+        else:
+            for var in xvars:
+                model.chgCoeff(constr,var, 0)
+    model.write("after.lp")
+    model.optimize()
+    model.write("after.sol")
