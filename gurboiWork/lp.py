@@ -42,8 +42,8 @@ while removalCount > 1 and model.status != GRB.INFEASIBLE:
 #tool that allows you to remove a specific set of organisms
 #remove row with the most dashes
 #begin removing the row
-    minRow = 0
-    minXs = matrix[0].count('X')
+    minRow = n+1
+    minXs = k+1
     for i in range (0, n):
         #print(matrix[i])
         #print("foo")
@@ -74,8 +74,10 @@ while removalCount > 1 and model.status != GRB.INFEASIBLE:
                     model.chgCoeff(constr,var, 0)
         model.write("after" + str(row) +".lp")
         model.optimize()
-        model.write("after" + str(row) +".sol")
+        if model.status != GRB.INFEASIBLE: 
+            model.write("after" + str(row) +".sol")
 
+print("Reamining rows:"  + str(removalCount))
 #print matrix:
 for i in range(0,n):
     if matrix[i]  != ".":
