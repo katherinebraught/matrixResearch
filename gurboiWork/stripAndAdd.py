@@ -14,6 +14,7 @@ import sys
 from gurobipy import *
 
 def removeRow(model, row, removedConstr):
+    print("removing row " + str(row))
     constraints = model.getConstrs()
     vars = model.getVars()
     #find the variables that corresponds with row
@@ -58,9 +59,12 @@ if len(sys.argv) < 3:
 
 # Read and solve initial model
 model = read(sys.argv[1])
-model.write("eucbefore.lp")
+model.write("irusbefore.lp")
 model.optimize()
-model.write("eucbefore.sol")
+model.write("irusbefore.sol")
+
+#surpress output
+#model.setParam(GRB.Param.OutputFlag, 0)
 
 #read in matrix
 matrixFile = open(sys.argv[2], "r")
@@ -74,34 +78,56 @@ matrixCopy = matrix[:]
 
 removalCount = n
 removedConstr = {}
+removedRows = []
 
-#while model is not infeasible
-while removalCount > 1 and model.status != GRB.INFEASIBLE:
-    removalCount = removalCount - 1
-#consider removing reptitive columns
-#good testing ones have lots of X's
-#tool that allows you to remove a specific set of organisms
-#remove row with the most dashes
-#begin removing the row
-    minRow = n+1
-    minXs = k+1
-    for i in range (0, n):
-        #print(matrix[i])
-        #print("foo")
-        if matrix[i] != ".":
-            if matrix[i].count('X') < minXs:
-                minXs = matrix[i].count('X')
-                minRow = i
+#find column with the most x's
+maxColumn = 0
+maxX = 0
+for i in range(0,k):
+    xCount = 0
+    for j in range(0,n):
+        if matrix[j][i] == "X":
+            xCount=xCount+1
+    if (xCount > maxX):
+        maxX = xCount
+        maxColumn = i
 
-    row = minRow
-    matrix[row] = "."
-    print("removing row" + str(row))
-    if (row != "n"):
-        removeRow(model, row, removedConstr)
-        model.write("after" + str(row) +".lp")
-        model.optimize()
-        if model.status != GRB.INFEASIBLE: 
-            model.write("after" + str(row) +".sol")
+#remove all the rows missing the max x
+for i in range(0,n):
+    if matrix[i][maxColumn] != "X":
+        removeRow(model, i, removedConstr)
+        removedRows.append(i)
+#now we have an infeasible solution        
+model.optimize()
+
+###while model is not infeasible
+##while removalCount > 1 and model.status != GRB.INFEASIBLE:
+##    removalCount = removalCount - 1
+##
+##    minRow = n+1
+##    minXs = k+1
+##    for i in range (0, n):
+##        #print(matrix[i])
+##        #print("foo")
+##        if matrix[i] != ".":
+##            if matrix[i].count('X') < minXs:
+##                minXs = matrix[i].count('X')
+##                minRow = i
+##
+##    row = minRow
+##    matrix[row] = "."
+##    #print("removing row" + str(row))
+##    if (row != "n"):
+##        removeRow(model, row, removedConstr)
+##        model.write("after" + str(row) +".lp")
+##        model.optimize()
+##        if model.status != GRB.INFEASIBLE: 
+##            model.write("after" + str(row) +".sol")
+
+#check all subsets
+
+#pick the subset that has the most
+            
 #print("Removed rows:")
 #for i in range (0, n):
 #    if matrix[i] ==".":
@@ -112,8 +138,8 @@ print("---------------------------------------")
 #for i in range(0,n):
 #    if matrix[i]  != ".":
 #        print(str(i) + "    " + matrix[i])
-addRow(model, 133, removedConstr)
-model.optimize()
+#addRow(model, 133, removedConstr)
+#model.optimize()
 
 
 
