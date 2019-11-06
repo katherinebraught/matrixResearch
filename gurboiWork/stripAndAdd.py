@@ -14,7 +14,7 @@ import sys
 from gurobipy import *
 
 def removeRow(model, row, removedConstr):
-    print("removing row " + str(row))
+    #print("removing row " + str(row))
     constraints = model.getConstrs()
     vars = model.getVars()
     #find the variables that corresponds with row
@@ -51,6 +51,28 @@ def addRow(model, row, removedConstr):
     #model.addConstr(removedConstr["cc(0," + str(row) + ")"])
     constrInfo = removedConstr["cc(0," + str(row) + ")"]
     model.addConstr(constrInfo[0], constrInfo[1], constrInfo[2], constrInfo[3])
+    #undo addition to first set:
+    
+
+def powerset(seq):
+    """
+    Returns all the subsets of this set. This is a generator.
+    """
+    if len(seq) <= 0:
+        yield []
+    else:
+        for item in powerset(seq[1:]):
+            yield [seq[0]]+item
+            yield item
+
+def get_power_set(s):
+  power_set=[[]]
+  for elem in s:
+    # iterate over the sub sets so far
+    for sub_set in power_set:
+      # add a new subset consisting of the subset at hand added elem
+      power_set=power_set+[list(sub_set)+[elem]]
+  return power_set
 
 
 if len(sys.argv) < 3:
@@ -64,7 +86,7 @@ model.optimize()
 model.write("irusbefore.sol")
 
 #surpress output
-#model.setParam(GRB.Param.OutputFlag, 0)
+model.setParam(GRB.Param.OutputFlag, 0)
 
 #read in matrix
 matrixFile = open(sys.argv[2], "r")
@@ -99,6 +121,41 @@ for i in range(0,n):
         removedRows.append(i)
 #now we have an infeasible solution        
 model.optimize()
+
+#check all subsets
+power_sets = get_power_set(removedRows)
+
+#could probably be made more efficient by adding and removing rows only as needed to get the powersets
+lengthOfOptSolution=0
+optSolution = []
+for row_set in power_sets:
+    #add all the rows
+    for row in row_set:
+        addRow(model, row, removedConstr)
+    #check if its infeasible
+    model.optimize()
+    infeasCount = 0
+    if model.status == GRB.INFEASIBLE:
+        #print("???")
+        #infeasCount=infeasCount+1
+        #if it is, set that as opt solution
+        if lengthOfOptSolution < len(row_set):
+            lengthOfOptSolution = len(row_set)
+            optSolution = row_set[:]
+    else:
+        print(row_set)
+    #remove all the rows
+    for row in row_set:
+        removeRow(model, row, removedConstr)
+
+print(infeasCount)
+print(removedRows)
+print(optSolution)
+print(lengthOfOptSolution)
+for row in optSolution:
+    addRow(model, row, removedConstr)
+model.optimize()
+model.write("opt.lp")
 
 ###while model is not infeasible
 ##while removalCount > 1 and model.status != GRB.INFEASIBLE:
