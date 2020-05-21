@@ -1,0 +1,21 @@
+Dependencies:
+I used Python 3.8.2.
+I was able to install pysat python library on pyrite using:
+$ pip install --user python-sat
+
+Running the program:
+The program takes in an input file that contains the matrix with the taxa names and can be run as:
+./SATpipeline.sh matrixFileName -arg
+where arg can be a or r where 
+-a means we add and remove rows to find a solution
+-r means to we only remove rows 
+
+Example:
+./SATpipeline.sh irus.txt -a
+./SATpipeline.sh ficus -r
+
+Output files:
+
+
+
+
