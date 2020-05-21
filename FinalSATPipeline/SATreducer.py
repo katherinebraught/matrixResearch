@@ -380,6 +380,7 @@ def stripAndAdd():
 		outMatrix.write(matrix[i]+ '\n')
 	#addRow(model, 133, removedConstr)
 	#model.optimize()
+	outMatrix.close()
 
 def remove():	
 	#read in matrix
