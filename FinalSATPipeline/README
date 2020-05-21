@@ -26,7 +26,7 @@ matrixSummary.txt - file containing info about result sizes and timing results
 
 
 
-Please note the program is not perfectly written and still has print statements,unused functions, commented out old code, etc.
+Please note the program is not cleaned and still has print statements,unused functions, commented out old code, etc.
 
 
 
