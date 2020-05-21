@@ -15,7 +15,18 @@ Example:
 ./SATpipeline.sh ficus -r
 
 Output files:
+If the program takes a file named "matrix" as its input, it will always output the following files:
+matrixStripped - matrix without taxa names
+matrixReduced - matrix with repeated rows removed
+matrixReducedResults - decisive matrix in reduced forms
+matrixFinalResults - decisive matrix with duplicate rows added back in (if they are present in the reduced decisive matrix)
+matrixSummary.txt - file containing info about result sizes and timing results
 
+(I believe the add method outputs an additional file with timing information)
+
+
+
+Please note the program is not perfectly written and still has print statements,unused functions, commented out old code, etc.
 
 
 
